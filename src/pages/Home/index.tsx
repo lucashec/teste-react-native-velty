@@ -35,7 +35,9 @@ const Home: React.FC = () => {
 
   return (
     <>
-    <ScrollView style={{ backgroundColor: '#fff'}}>
+    <ScrollView
+     showsVerticalScrollIndicator={false}
+    >
      <InfoBanner>
         <Title>
           Olá, José  
@@ -158,6 +160,9 @@ const Home: React.FC = () => {
       searchIcon={searchIcon}
       ordersIcon={ordersIcon}
       configIcon={configIcon}
+      onPressOrders={() => {
+        navigation.navigate('Orders');
+      }}
     />
     </>
   );

@@ -29,12 +29,16 @@ import {
 import { ScrollView } from 'react-native-gesture-handler';
 
 
-const Register: React.FC = () => {
+const Payments: React.FC = () => {
   const navigation = useNavigation();
   return (
     <Container>
       <TitleWrapper>
-        <ButtonWrapper>
+        <ButtonWrapper 
+          onPress={() => {
+            navigation.goBack();
+          }}
+        >
           <AntDesign name="left" size={20}/> 
         </ButtonWrapper>
         <Text style={TitleLabel.text}>
@@ -70,7 +74,11 @@ const Register: React.FC = () => {
             <Text style={CardChooseLabels.title}>
               Escolha o cartão 
             </Text>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('AddCreditCard');
+              }}
+            >
             <Text style={CardChooseLabels.add}>
               +  Adicionar
             </Text>
@@ -147,4 +155,4 @@ const Register: React.FC = () => {
   );
 }
 
-export default Register;
+export default Payments;

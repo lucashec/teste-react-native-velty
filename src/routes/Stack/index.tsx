@@ -9,6 +9,8 @@ import Appointment from '../../pages/Appointment';
 import Orders from "../../pages/Orders";
 import Search from "../../pages/Search";
 import Payments from "../../pages/Payments";
+import AddCreditCard from "../../pages/AddCreditCard";
+import AddAddress from "../../pages/AddAddress";
 import AppTabs from "../Tab";
 
 const {Navigator, Screen} = createNativeStackNavigator();
@@ -23,6 +25,10 @@ export default function(){
             <Screen name="Home" component={Home}/>
             <Screen name="Appointment" component={Appointment}/>
             <Screen name="Payments" component={Payments}/>
+            <Screen name="AddCreditCard" component={AddCreditCard}/>
+            <Screen name="AddAddress" component={AddAddress}/>
+            <Screen name="Orders" component={Orders}/>
+            <Screen name="Search" component={Search}/>
         </Navigator>
     )
 }
