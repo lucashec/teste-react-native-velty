@@ -63,7 +63,6 @@ export const CategoryWrapper = styled.View`
 export const ImageWrapper = styled.View`
     width: 100%;
     height: 50%;
-    background-color: yellow;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
 `;
@@ -95,3 +94,15 @@ export const ServicesContainer = styled.View`
     justify-content: space-between;
     align-items: center;
 `;
+export const NotFoundWrapper = styled.View`
+    width: 100%;
+    height: 80px;
+    margin-top: 30px;
+`;
+export const NotFoundLabels = StyleSheet.create({
+    text:{
+        fontFamily: 'Brother-1816-Regular',
+        fontSize: 18,
+        color: '#041637'
+    }
+})

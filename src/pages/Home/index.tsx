@@ -7,11 +7,11 @@ import BottomTabBar from '../../components/BottomTabBar';
 import { useNavigation } from '@react-navigation/native';
 
 import Img from '../../assets/cashback.jpg';
-import unha from '../../assets/unhas.png';
-import pemao from '../../assets/pemao.png';
-import pe from '../../assets/pe.png';
-import escova from '../../assets/escova.png';
-import cabelo from '../../assets/cabelo.png';
+import manicure from '../../assets/manicure.png';
+import combo from '../../assets/combo.png';
+import pedicure from '../../assets/pedicure.png';
+import hair from '../../assets/hair.png';
+import longHair from '../../assets/long-hair.png';
 import principal from '../../assets/principal-icon.png';
 import searchIcon from '../../assets/search.png';
 import ordersIcon from '../../assets/icons-Document.png';
@@ -75,7 +75,7 @@ const Home: React.FC = () => {
             showsHorizontalScrollIndicator={false}
           >          
           <ServiceBannerItem 
-          imagePath={unha}
+          imagePath={manicure}
           serviceTitle='Mãos'
           price='R$ 9,90'
           onPress={() => {
@@ -84,13 +84,13 @@ const Home: React.FC = () => {
           />
 
           <ServiceBannerItem 
-          imagePath={pemao}
+          imagePath={combo}
           serviceTitle='Pés e Mãos'
           price='R$ 19,90' 
           />
 
         <ServiceBannerItem 
-          imagePath={pe}
+          imagePath={pedicure}
           serviceTitle='Pés'
           price='R$ 9,90' 
           />
@@ -98,7 +98,7 @@ const Home: React.FC = () => {
         </ServicesBannerWrapper>
 
         <SectionTitle>
-          Cabelo
+          Cabelos
         </SectionTitle>
 
         <ServicesBannerWrapper>
@@ -107,20 +107,20 @@ const Home: React.FC = () => {
             showsHorizontalScrollIndicator={false}
           >          
           <ServiceBannerItem 
-          imagePath={escova}
+          imagePath={hair}
           serviceTitle='Título'
           price='R$ 9,90' 
           />
 
           <ServiceBannerItem 
-          imagePath={cabelo}
+          imagePath={longHair}
           serviceTitle='Título'
           price='R$ 19,90' 
           />
 
         <ServiceBannerItem 
-          imagePath={escova}
-          serviceTitle= 'Escova em cabelo curto'
+          imagePath={hair}
+          serviceTitle= 'Escova em Cabelo curto'
           price='R$ 9,90' 
           />
           </ScrollView>
@@ -136,19 +136,19 @@ const Home: React.FC = () => {
             showsHorizontalScrollIndicator={false}
           >          
           <ServiceBannerItem 
-          imagePath={unha}
+          imagePath={manicure}
           serviceTitle= 'Título'
           price='R$ 9,90' 
           />
 
           <ServiceBannerItem 
-          imagePath={pemao}
+          imagePath={combo}
           serviceTitle= 'Título'
           price='R$ 19,90' 
           />
 
         <ServiceBannerItem 
-          imagePath={pe}
+          imagePath={pedicure}
           serviceTitle= 'Título'
           price='R$ 9,90' 
           />
@@ -162,6 +162,9 @@ const Home: React.FC = () => {
       configIcon={configIcon}
       onPressOrders={() => {
         navigation.navigate('Orders');
+      }}
+      onPressSearch={() => {
+        navigation.navigate('Search');
       }}
     />
     </>

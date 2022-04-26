@@ -1,15 +1,17 @@
-import { ServerContainer } from '@react-navigation/native';
-import React, { useState } from 'react';
-import { View, Text} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, Image} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import AntDesign from  'react-native-vector-icons/AntDesign'
-import hair from '../../assets/cabelo.png';
+import hair from '../../assets/long-hair.png';
 import BottomTabBar from '../../components/BottomTabBar';
 import ServiceBannerItem from '../../components/ServiceBannerItem';
 import home from '../../assets/icons-Home.png';
-import search from '../../assets/search.png';
+import search from '../../assets/search-long.png';
 import orders from '../../assets/icons-Document.png';
 import config from '../../assets/icons-Setting.png';
+import little1 from '../../assets/little1.png';
+import little2 from '../../assets/little2.png';
+import little3 from '../../assets/little3.png';
 
 import { CategoryInfoWrapper, 
     CategoryLabels, 
@@ -18,7 +20,9 @@ import { CategoryInfoWrapper,
     SectionTitle,
     OtherSectionTitle,
     ServicesContainer, 
-    CategoriesContainer} from './styles';
+    CategoriesContainer,
+    NotFoundWrapper,
+    NotFoundLabels} from './styles';
 import { 
     Container, 
     SearchBoxWrapper, 
@@ -26,9 +30,16 @@ import {
     SearchInput,
     ResultContainer
 } from './styles';
+import { useNavigation } from '@react-navigation/native';
 
 const Search: React.FC = () => {
     const [keyword, setKeyword] = useState('');
+    const [isEmpty, setIsEmpty] = useState(true);
+    const navigation = useNavigation();
+    
+    useEffect(() => {
+        if (keyword.length == 0) setIsEmpty(true)
+    }, [keyword])
     return (
      <Container>
         <SearchBoxWrapper>
@@ -44,16 +55,26 @@ const Search: React.FC = () => {
             value={keyword}
             onChangeText={(text) => {
                 setKeyword(text)
+                setIsEmpty(false)
             }} 
             />
          </SearchBox>   
         </SearchBoxWrapper> 
         <ResultContainer>
+        {
+          keyword.length > 4 ?
+          <NotFoundWrapper>
+            <Text style={NotFoundLabels.text}>
+            Não foram encontrados resultados 
+            para os termos da sua busca
+            </Text>  
+          </NotFoundWrapper>
+          :
             <ScrollView
             showsVerticalScrollIndicator={false}
             >
-        {
-            !keyword &&
+            {
+            isEmpty &&
             <>
             <SectionTitle>
             Categorias
@@ -66,7 +87,7 @@ const Search: React.FC = () => {
             >
             <CategoryWrapper>
                 <ImageWrapper>
-
+                    <Image source={little1}/>
                 </ImageWrapper>
                 <CategoryInfoWrapper>
                 <Text style={CategoryLabels.title}>
@@ -80,7 +101,7 @@ const Search: React.FC = () => {
 
             <CategoryWrapper>
                 <ImageWrapper>
-
+                    <Image source={little2}/>
                 </ImageWrapper>
                 <CategoryInfoWrapper>
                 <Text style={CategoryLabels.title}>
@@ -94,7 +115,7 @@ const Search: React.FC = () => {
 
             <CategoryWrapper>
                 <ImageWrapper>
-
+                    <Image source={little3}/>
                 </ImageWrapper>
                 <CategoryInfoWrapper>
                 <Text style={CategoryLabels.title}>
@@ -109,7 +130,7 @@ const Search: React.FC = () => {
 
             <CategoryWrapper>
                 <ImageWrapper>
-
+                    <Image source={little2}/>
                 </ImageWrapper>
                 <CategoryInfoWrapper>
                 <Text style={CategoryLabels.title}>
@@ -124,15 +145,15 @@ const Search: React.FC = () => {
             </ScrollView>
             </CategoriesContainer>
             </>
-        }         
-        
-        
-         <OtherSectionTitle>
-             Todos os Serviços
-         </OtherSectionTitle>
-        
-       
-        <ServicesContainer>
+            }         
+
+
+            <OtherSectionTitle>
+            Todos os Serviços
+            </OtherSectionTitle>
+
+
+            <ServicesContainer>
             <ServiceBannerItem 
             imagePath={hair}
             serviceTitle='Cabelo'
@@ -144,10 +165,10 @@ const Search: React.FC = () => {
             serviceTitle='Cabelo'
             price='R$ 9,90' 
             />
-        
-        </ServicesContainer>
 
-        <ServicesContainer>
+            </ServicesContainer>
+
+            <ServicesContainer>
             <ServiceBannerItem 
             imagePath={hair}
             serviceTitle='Cabelo'
@@ -159,12 +180,11 @@ const Search: React.FC = () => {
             serviceTitle='Cabelo'
             price='R$ 9,90' 
             />
-        
-        </ServicesContainer>
 
-        </ScrollView>
-         
+            </ServicesContainer>
 
+            </ScrollView>
+        }
         </ResultContainer>
 
         <BottomTabBar
@@ -172,6 +192,15 @@ const Search: React.FC = () => {
         searchIcon={search}
         ordersIcon={orders}
         configIcon={config}
+        onPressOrders={() => {
+            navigation.navigate('Orders');
+          }}
+          onPressSearch={() => {
+            navigation.navigate('Search');
+          }}
+          onPressHome={() => {
+            navigation.navigate('Home');
+          }}
         />
      </Container>
     );

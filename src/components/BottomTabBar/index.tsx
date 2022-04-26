@@ -11,13 +11,14 @@ interface BottomTabBarProps{
     configIcon: any;
     onPressOrders?: any;
     onPressSearch?: any;
+    onPressHome?: any;
 }
 
 const BottomTabBar: React.FC<BottomTabBarProps>= (props) => {
   const navigation = useNavigation();
   return (
       <Container>
-        <TouchableOpacity >
+        <TouchableOpacity onPress={props.onPressHome}>
             <Image source={props.pricipalIcon}/>
         </TouchableOpacity>
         <TouchableOpacity onPress={props.onPressSearch}>
